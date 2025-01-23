@@ -1,58 +1,49 @@
-import random
-def uvod():
-    print("\nVítej, zaklínači/n")
-    print("Stojíš u cedule kde jsou 3 kontrakty. Můžeš si vybrat co chceš.")
-    print("1. Zničit hnízdo harpyi na ztroskotané lodi")
-    print("2. Porazit ghoula který se vyskytuje na bývalém bojišti")
-    print("3. Porazit přízrak který napadá pozůstalé na hřbitově")
-
-def uvod_h():
-    print("\nVrátil ses zpět ceduli s kontrakty. Už jsou tady pouze 2./n")
-    print("1. Porazit ghoula který se vyskytuje na bývalém bojišti")
-    print("2. Porazit přízrak který napadá pozůstalé na hřbitově")
-
-def boj_harpye():
-    print("\nPřibližuješ se k hejnu. Všimli si tě, normální lidé by utekli ale tebe na tohle připravovali celý život./n") 
-    #procenta na vyhru 
-    if random.random() > 0.3:  # 70%
-        print("\nPorazil si celé hejno a zničil jejich hnízdo.")
-        uvod_h()
-    else:
-        print("\nBylo jich až moc. Musel si utéct.")
-        uvod()
-#moznost 2 u questu 1
-def hnizdo():
-    print("\nNad hlavou ti pořád lítá hejno, ale rozhodl ses jít přímo po hnízdu.")
-    #procenta na vyhru
-    if random.random() > 0.3:  # 70%
-        print("\nÚspěšně si zničil hnízdo a celé hejno zmizelo.")
-        uvod_h()
-    else:
-        print("\nZkusil si všechno co si mohl ale nic nefungovalo. Musel si utéct.")
-        uvod()
-
-
-def harpye():
-    print("\nVstoupil si do ztroskotané lodi. Nad hlavou ti lítá hejno harpyí.")
-    print("Hnízdo harpyí se nachází u kormidla. Musíš se k němu dostat.")
-    print("Budeš bojovat s harpyemi přímo nebo zničíš hnízdo první?")
-    print("Víš že můžeš harpye porazit, ale taky víš ze svého výcviku že pokud jim zničíš hnízdo tak se přehnízdí a v okolí nezůstanou.")
-    print("Jaký přístup zvolíš?")
-    volba = input("Zvol (1) pro boj s harpyemi, (2) pro zničení hnízda, (3) pro vrácení zpět na začátek ")
-    #vyber pristupu k ukolu
+print("4. Vyrazit do tajuplné věže.")
+def vez():
+    print("\nZavítal jsi k tajuplné věži. Slyšíš jak vítr šustí korunamy stromů a obloha nad věží se neustále mění.")
+    volba = input("Jsi si jistý, že chceš vstoupit do věže? (1 = Odejít, 2 = Vstoupit do věže): ")
     if volba == "1":
-        boj_harpye()
-
+        print("Odcházíš od věže v pořádku, ale nic nezískáváš.")
+        return 0
     elif volba == "2":
-        hnizdo()
-
+        print("Vztupuješ do věže, vidíš dveře a schody, které vedou nahoru i dolů. Dveře, kterými jsi přišel záhadně zmizely.")
+def vstupni_mistnost():
+    volba = input("\nMůžeš prozkoumat co se skrývá za dvěřmi nebo můžeš pokračovat po schodech nahoru (1 = Otevřít dveře, 2 = Pokračovat po schodech nahoru, 3 = Pokračovat po schodech dolů)")
+    if volba == "1":
+        print("Vstupuješ do temné místnosti kde se nachází truhla")
+        volba == input("\n1 = Vrátit se do vstupní místnosti, 2 = Otevřít truhlu")
+        if volba == "1":
+            vstupni_mistnost()
+        elif volba =="2":
+            print("Truhla byla prázdná, nic nezískáváš a vracíš se do vstupní místnosti")
+            vstupni_mistnost()
+    elif volba == "2":
+        print("Vydal jsi se po schodech nahoru a našel jsi další dveře.")
+        volba = input("\n1 = Otevřít dveře, 2 = Vrátit se zpět")
+        if volba == "1":
+            print("V místnosti hoří louče a uprostřed vidíš oltář na kterém je otevřená kniha. Po boku vidíš knihovný s hromadou knih")
+            volba = ("\n1 = Přečíst si knihu, 2 = Odejít z místnosti")
+            if volba == "1":
+                print("Přečetl jsi nahlas jednu stránku z knihy. Po chvíli se začne třást celá věž a citíš jak se v tobě probouzí neznámá síla")
+                return 3
+            elif volba == "2":
+                vstupni_mistnost()           
     elif volba == "3":
-        uvod()    
-
+        print("Postupuješ dolů po schodech. Najednou zakopneš a kutálíš se až úplně dolů. Po tom co jsi se otřepal z pádu se rozhlédneš kolem sebe a vidíš 3 truhly vedle sebe.")
+        volba = input("\n1 = Otevřít truhlu na levo, 2 = Otevřít truhlu uprostřed, 3 = Otevřít truhlu na pravo, 4 = Vrátit se zpět")
+        if volba == "1":
+            print("Otevřel jsi truhlu a všimneš si, že ta truhla má zuby. Je však už pozdě a truhla po tobě skočí a sežere tě. No jo, byl to mimik")
+            return -1
+        elif volba == "2":
+            print("Otevřel jsi truhlu. Vidíš v ní hromadu předmětů, ale žádný nevypadá, že by měl nějákou cenu. Krom teda jednoho, kterého si všimneš a vezmeš. Našel jsi artefakt, který ti přidává 2 body a 2 body síly")
+            return 2
+        elif volba == "3":
+            print("Otevřel jsi truhlu. Vidíš v ní hromadu předmětů, ale žádný nevypadá, že by měl nějákou cenu. Odcházíš s prázdnou")
+            vstupni_mistnost()
+        else:
+            vstupni_mistnost()
     else:
-        print("Neplatná volba. Vyber 1, 2 nebo 3.")
-        harpye() 
-
-
-                    
-   
+        print("Neplatná volba")
+        vstupni_mistnost()
+vez()
+vstupni_mistnost()
